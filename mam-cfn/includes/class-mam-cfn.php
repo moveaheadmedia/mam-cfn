@@ -35,27 +35,36 @@ class Mam_Cfn {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Mam_Cfn_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Mam_Cfn_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
-	protected $loader;
+	protected Mam_Cfn_Loader $loader;
 
 	/**
 	 * The unique identifier of this plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @var      string $plugin_name The string used to uniquely identify this plugin.
 	 */
-	protected $plugin_name;
+	protected string $plugin_name;
+
+	/**
+	 * The Plugin file name and location in WordPress.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      string $plugin_basename The string used to Plugin file name and location in WordPress.
+	 */
+	protected string $plugin_basename;
 
 	/**
 	 * The current version of the plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @var      string $version The current version of the plugin.
 	 */
-	protected $version;
+	protected string $version;
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -73,6 +82,7 @@ class Mam_Cfn {
 			$this->version = '1.0.0';
 		}
 		$this->plugin_name = 'mam-cfn';
+		$this->plugin_basename = 'mam-cfn/mam-cfn.php';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -152,10 +162,12 @@ class Mam_Cfn {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Mam_Cfn_Admin( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$plugin_basename = $this->get_plugin_basename();
+		$plugin_admin    = new Mam_Cfn_Admin( $this->get_plugin_name(), $this->get_version() );
+		$this->loader->add_action( 'admin_notices', $plugin_admin, 'check_requirements' );
+		$this->loader->add_action( 'acf/init', $plugin_admin, 'add_options_page' );
+		$this->loader->add_action( 'acf/init', $plugin_admin, 'add_custom_fields' );
+		$this->loader->add_filter( "plugin_action_links_$plugin_basename", $plugin_admin, 'settings_link' );
 
 	}
 
@@ -170,7 +182,6 @@ class Mam_Cfn {
 
 		$plugin_public = new Mam_Cfn_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 	}
@@ -188,30 +199,41 @@ class Mam_Cfn {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
+	 * @since     1.0.0
 	 */
-	public function get_plugin_name() {
+	public function get_plugin_name(): string {
 		return $this->plugin_name;
+	}
+
+	/**
+	 * The name of the plugin used to uniquely identify it within the context of
+	 * WordPress and to define internationalization functionality.
+	 *
+	 * @return    string    The name of the plugin.
+	 * @since     1.0.0
+	 */
+	public function get_plugin_basename(): string {
+		return $this->plugin_basename;
 	}
 
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
 	 * @return    Mam_Cfn_Loader    Orchestrates the hooks of the plugin.
+	 * @since     1.0.0
 	 */
-	public function get_loader() {
+	public function get_loader(): Mam_Cfn_Loader {
 		return $this->loader;
 	}
 
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
+	 * @since     1.0.0
 	 */
-	public function get_version() {
+	public function get_version(): string {
 		return $this->version;
 	}
 

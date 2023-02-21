@@ -1,0 +1,298 @@
+[
+  {
+    "key": "group_63f46207cf4b4",
+    "title": "Custom Forwarding Numbers",
+    "fields": [
+      {
+        "key": "field_63f46207f37e4",
+        "label": "Phone Numbers",
+        "name": "mam_cfn_phone_numbers",
+        "aria-label": "",
+        "type": "repeater",
+        "instructions": "",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "wpml_cf_preferences": 1,
+        "layout": "block",
+        "pagination": 0,
+        "min": 0,
+        "max": 0,
+        "collapsed": "field_63f4634ff37e5",
+        "button_label": "Add Phone Number",
+        "rows_per_page": 20,
+        "sub_fields": [
+          {
+            "key": "field_63f4641cf37e9",
+            "label": "Conditions",
+            "name": "conditions",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "100",
+              "class": "",
+              "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "layout": "block",
+            "min": 1,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Condition",
+            "rows_per_page": 20,
+            "sub_fields": [
+              {
+                "key": "field_63f4644af37ea",
+                "label": "Select Condition",
+                "name": "select_condition",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "50",
+                  "class": "",
+                  "id": ""
+                },
+                "wpml_cf_preferences": 1,
+                "choices": {
+                  "Always": "Always",
+                  "Match Current URL": "Match Current URL",
+                  "Match UTM Source": "Match UTM Source",
+                  "Match UTM Campaign": "Match UTM Campaign",
+                  "Match UTM Medium": "Match UTM Medium",
+                  "Match Referral Contains": "Match Referral Contains"
+                },
+                "default_value": "Always",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": "",
+                "parent_repeater": "field_63f4641cf37e9"
+              },
+              {
+                "key": "field_63f46523f37ed",
+                "label": "Value",
+                "name": "value",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                  [
+                    {
+                      "field": "field_63f4644af37ea",
+                      "operator": "==",
+                      "value": "Match UTM Source"
+                    }
+                  ],
+                  [
+                    {
+                      "field": "field_63f4644af37ea",
+                      "operator": "==",
+                      "value": "Match UTM Campaign"
+                    }
+                  ],
+                  [
+                    {
+                      "field": "field_63f4644af37ea",
+                      "operator": "==",
+                      "value": "Match UTM Medium"
+                    }
+                  ],
+                  [
+                    {
+                      "field": "field_63f4644af37ea",
+                      "operator": "==",
+                      "value": "Match Referral Contains"
+                    }
+                  ],
+                  [
+                    {
+                      "field": "field_63f4644af37ea",
+                      "operator": "==",
+                      "value": "Match Current URL"
+                    }
+                  ]
+                ],
+                "wrapper": {
+                  "width": "50",
+                  "class": "",
+                  "id": ""
+                },
+                "wpml_cf_preferences": 1,
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "parent_repeater": "field_63f4641cf37e9"
+              }
+            ],
+            "parent_repeater": "field_63f46207f37e4"
+          },
+          {
+            "key": "field_63f4634ff37e5",
+            "label": "Numbers to Replace",
+            "name": "numbers",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "53",
+              "class": "",
+              "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "layout": "block",
+            "min": 1,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Phone Number Text",
+            "rows_per_page": 20,
+            "sub_fields": [
+              {
+                "key": "field_63f468c9ffc94",
+                "label": "Phone Number Text",
+                "name": "text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "wpml_cf_preferences": 1,
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "parent_repeater": "field_63f4634ff37e5"
+              }
+            ],
+            "parent_repeater": "field_63f46207f37e4"
+          },
+          {
+            "key": "field_63f463e1f37e6",
+            "label": "Links to Replace",
+            "name": "links",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "47",
+              "class": "",
+              "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "layout": "block",
+            "min": 1,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Tel Links",
+            "rows_per_page": 20,
+            "sub_fields": [
+              {
+                "key": "field_63f4691cffc95",
+                "label": "Phone Number Link",
+                "name": "link",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "wpml_cf_preferences": 1,
+                "default_value": "",
+                "placeholder": "",
+                "parent_repeater": "field_63f463e1f37e6"
+              }
+            ],
+            "parent_repeater": "field_63f46207f37e4"
+          },
+          {
+            "key": "field_63f463f3f37e8",
+            "label": "Replace with Text",
+            "name": "replace_with_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "50",
+              "class": "",
+              "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "parent_repeater": "field_63f46207f37e4"
+          },
+          {
+            "key": "field_63f463f2f37e7",
+            "label": "Replace with link",
+            "name": "replace_with_link",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "50",
+              "class": "",
+              "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "default_value": "",
+            "placeholder": "",
+            "parent_repeater": "field_63f46207f37e4"
+          }
+        ]
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "options_page",
+          "operator": "==",
+          "value": "mam-cfn"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+  }
+]

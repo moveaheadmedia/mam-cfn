@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Move Ahead Media Custom Forwarding Numbers
  * Plugin URI:        https://github.com/moveaheadmedia/mam-cfn
- * Description:       A Plugin that allows you to replace the current phone number on the website with custom forwarding numbers based on UTM data, referral or current page.
+ * Description:       A Plugin that allows you to replace the current phone number on the website with custom forwarding numbers based on UTM data, referral or current page. This plugin requires ACF Pro plugin to be installed and active to work.
  * Version:           1.0.0
  * Author:            Move Ahead Media
  * Author URI:        https://moveaheadmedia.com

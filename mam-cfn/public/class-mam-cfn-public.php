@@ -70,8 +70,22 @@ class Mam_Cfn_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mam-cfn-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script(
+			'js-cookie',
+			'https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js',
+			'',
+			'3.0.1'
+		);
+		wp_enqueue_script(
+			$this->plugin_name,
+			plugin_dir_url( __FILE__ ) . 'js/mam-cfn-public.js',
+			[ 'jquery', 'js-cookie' ],
+			$this->version,
+			false
+		);
 		$data                  = array();
+		/** @noinspection PhpUndefinedFunctionInspection */
+		// get_field is ACF global function
 		$data['phone_numbers'] = get_field( 'mam_cfn_phone_numbers', 'option' );
 		wp_localize_script( $this->plugin_name, 'mam_cfn', $data );
 	}
